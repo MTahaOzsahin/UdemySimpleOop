@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public sealed class Bmw : Car //mühürlendiði zamanda baþka birine miras veremez anlamýna gelir.
+public sealed class Bmw : Car , IGerman //mühürlendiði zamanda baþka birine miras veremez anlamýna gelir.
 {
     // bu bir constructer yani yapýcý bir methodtur. Kýsayol yazýmý ctor tap tap.
    public Bmw()
@@ -34,6 +34,15 @@ public sealed class Bmw : Car //mühürlendiði zamanda baþka birine miras veremez 
 
     }
     public bool IsFly { get; set; }
+    public bool IsGerman { get ; set ; }
+
+    public void GermanMakeSell()
+    {
+        if (IsGerman)
+        {
+            TotalPrice -= 4000m;
+        }
+    }
 
     public override void MakeSell1()
     {

@@ -22,26 +22,52 @@ public class MainProcesss : MonoBehaviour
 
     private void Start()
     {
-        //ctor simple
-        Bmw bmw1 = new Bmw("M","BMW",280f,2,true,true,10000m);
-        
+        List<object> objectList = new List<object>();
 
-        string resultBmw = "BMW total price is " + bmw1.TotalPrice;
+        Product product1 = new Product
+        {
+            ID = 1,
+            Name = "Product 1",
+            Price = 20m
+        };
 
-        bmw1.MakeSell1();
+        objectList.Add(product1.ToString());
 
-        Mercedes mercedes = new Mercedes();
-        mercedes.Brand = "Mercedes";
-        mercedes.Model = "AMG";
-        mercedes.TopSpeed = 320f;
-        mercedes.DoorNumber = 4;
-        mercedes.IsNew = true;
-        mercedes.ýsSweam = true;
-        mercedes.Price = 12000m;
+        Product product2 = new Product
+        {
+            ID = 2,
+            Name = "Product 2",
+            Price = 23m
+        };
+        objectList.Add(product2.ToString());
 
-        string resultMercedes = "Mercedess total price is " + mercedes.TotalPrice;
+        Product product3 = new Product
+        {
+            ID = 1,
+            Name = "Product 3",
+            Price = 24m
+        };
+        objectList.Add(product3.ToString());
 
-       // EstateAgent();
+
+        ProductStatic.ID = 4;
+        ProductStatic.Name = "Product 4";
+        ProductStatic.Price = 25m;
+
+        ProductStatic.ID = 5;
+        ProductStatic.Name = "Product 5";
+        ProductStatic.Price = 21m;
+
+        ProductStatic.ID = 6;
+        ProductStatic.Name = "Product 6";
+        ProductStatic.Price = 26m;
+
+
+        objectList.Add(ProductStatic.GetMessage());
+        objectList.Add(ProductStatic.GetMessage());
+        objectList.Add(ProductStatic.GetMessage());
+
+
 
     }
 
@@ -119,5 +145,50 @@ public class MainProcesss : MonoBehaviour
         {
             Debug.Log(resultVilla);
         }
+    }
+
+    private void CarSimple()
+    {
+        //ctor simple
+        Bmw bmw1 = new Bmw("M", "BMW", 280f, 2, true, true, 10000m);
+        bmw1.IsGerman = true;
+        bmw1.GermanMakeSell();
+
+        string resultBmw = "BMW total price is " + bmw1.TotalPrice;
+
+        bmw1.MakeSell1();
+
+        Mercedes mercedes = new Mercedes();
+        mercedes.Brand = "Mercedes";
+        mercedes.Model = "AMG";
+        mercedes.TopSpeed = 320f;
+        mercedes.DoorNumber = 4;
+        mercedes.IsNew = true;
+        mercedes.ýsSweam = true;
+        mercedes.Price = 12000m;
+
+        mercedes.IsGerman = true;
+        mercedes.GermanMakeSell();
+
+        string resultMercedes = "Mercedess total price is " + mercedes.TotalPrice;
+
+
+
+        Toyota toyota = new Toyota();
+
+        // EstateAgent();
+
+
+
+        List<IGerman> germanyCars = new List<IGerman>();
+        germanyCars.Add(bmw1);
+        germanyCars.Add(mercedes);
+
+        List<Car> cars = new List<Car>
+        {
+            mercedes,
+            bmw1,
+            toyota
+        };
     }
 }
